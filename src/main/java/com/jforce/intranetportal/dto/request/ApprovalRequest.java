@@ -1,10 +1,8 @@
 package com.jforce.intranetportal.dto.request;
 
-import jakarta.validation.constraints.NotBlank;
+import com.jforce.intranetportal.entity.ApprovalStatus;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-
-import java.time.LocalTime;
 
 @Data
 public class ApprovalRequest {
@@ -13,5 +11,5 @@ public class ApprovalRequest {
     private Long id;
 
     @NotNull(message = "Approval status cannot be null")
-    private Boolean isApproved;
+    private ApprovalStatus status;
 }
