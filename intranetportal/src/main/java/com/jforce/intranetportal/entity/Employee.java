@@ -37,13 +37,13 @@ public class Employee {
 
     @NotBlank(message = "First name cannot be blank")
     @Size(max = 50, message = "First name cannot exceed 50 characters")
-    @Column(name = "first_name", nullable = false, length = 50)
-    private String firstName;
+    @Column(name = "name", nullable = false, length = 50)
+    private String name;
 
     @NotBlank(message = "Last name cannot be blank")
     @Size(max = 50, message = "Last name cannot exceed 50 characters")
-    @Column(name = "last_name", nullable = false, length = 50)
-    private String lastName;
+    @Column(name = "surname", nullable = false, length = 50)
+    private String surname;
 
     @NotNull(message = "Birth date cannot be null")
     @Column(name = "birth_date", nullable = false)
@@ -56,8 +56,17 @@ public class Employee {
     private String email;
 
     @NotNull(message = "Registration number cannot be null")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "registration_number", nullable = false, unique = true)
     private Integer registrationNumber;
+
+    @NotBlank(message = "Password cannot be blank")
+    @Size(min = 8, max = 100, message = "Password must be between 8 and 100 characters")
+    @Column(name = "password", nullable = false)
+    private String password;
+
+    @Column(name = "profile_photo")
+    private String profilePhoto;
 
     @NotNull(message = "Department cannot be null")
     @ManyToOne(fetch = FetchType.LAZY)
