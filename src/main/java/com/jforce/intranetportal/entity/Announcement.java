@@ -45,12 +45,12 @@ public class Announcement {
     private Employee author;
 
     @CreationTimestamp
-    @Column(name = "created_at")
+    @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
-    @OneToMany(mappedBy = "announcement", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "announcement", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments;
 
-    @OneToMany(mappedBy = "announcement", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "announcement", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AnnouncementLike> announcementLikes;
 }

@@ -12,35 +12,28 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "comments")
-@NamedEntityGraph(
-        name = "Comment.withAnnouncementAndAuthor",
-        attributeNodes = {
-                @NamedAttributeNode("announcement"),
-                @NamedAttributeNode("author")
-        }
-)
+@Table(name = "appreciations")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Comment {
+public class Appreciation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "announcement_id")
-    private Announcement announcement;
+    @JoinColumn(name = "sender_id", nullable = false)
+    private Employee sender;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "author_id")
-    private Employee author;
+    @JoinColumn(name = "receiver_id", nullable = false)
+    private Employee receiver;
 
-    @NotBlank(message = "Content cannot be Blank")
-    @Size(max = 2000, message = "Content cannot exceed 2000 characters")
-    @Column(name = "content", nullable = false, length = 2000)
+    @NotBlank(message = "Content cannot be blank")
+    @Size(max = 500, message = "Content cannot exceed 500 characters")
+    @Column(name = "content", nullable = false, length = 500)
     private String content;
 
     @CreationTimestamp

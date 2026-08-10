@@ -1,6 +1,5 @@
 package com.jforce.intranetportal.dto.request;
 
-import com.jforce.intranetportal.entity.Department;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -25,6 +24,6 @@ public class EmployeeAdminUpdateRequest {
     @Size(min = 8, max = 100, message = "Password must be between 8 and 100 characters")
     private String password;
 
-    private Department department;
+    private Integer departmentId;
     private Boolean isActive = true;
 }

@@ -46,7 +46,7 @@ public class Employee {
     private String surname;
 
     @NotNull(message = "Birth date cannot be null")
-    @Column(name = "birth_date", nullable = false)
+    @Column(name = "date_of_birth", nullable = false)
     private LocalDate birthDate;
 
     @NotBlank(message = "Email cannot be blank")
@@ -73,6 +73,10 @@ public class Employee {
     @JoinColumn(name = "department_id", nullable = false)
     private Department department;
 
+    @NotNull(message = "Remaining leave days cannot be null")
+    @Column(name = "remaining_leave_days", nullable = false)
+    private Integer remainingLeaveDays = 0;
+
     @NotNull(message = "Role cannot be null")
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false, length = 20)
@@ -81,7 +85,7 @@ public class Employee {
     @Column(name = "is_active", nullable = false)
     private Boolean isActive = true;
 
-    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<EmployeeSkill> employeeSkills;
 
     @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
@@ -110,4 +114,10 @@ public class Employee {
 
     @OneToMany(mappedBy = "liker", fetch = FetchType.LAZY)
     private List<AnnouncementLike> announcementLikes;
+
+    @OneToMany(mappedBy = "sender", fetch = FetchType.LAZY)
+    private List<Appreciation> sentAppreciations;
+
+    @OneToMany(mappedBy = "receiver", fetch = FetchType.LAZY)
+    private List<Appreciation> receivedAppreciations;
 }

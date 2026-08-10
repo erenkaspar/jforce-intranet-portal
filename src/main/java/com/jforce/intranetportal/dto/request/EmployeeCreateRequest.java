@@ -33,5 +33,5 @@ public class EmployeeCreateRequest {
     private String password;
 
     @NotNull(message = "Department id cannot be null")
-    private Long departmentId;
+    private Integer departmentId;
 }

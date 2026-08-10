@@ -27,7 +27,7 @@ The SQL dump file (`jforce_portal_db.sql`), reflecting the relational database s
 Additionally, the visual database schema (ER Diagram) can be accessed online via [this link (dbdiagram.io)](https://dbdiagram.io/d/ErenKasparStaj-6a51276e4ac62e474c7b7ff6).
 
 ## Next Planned Task
-* ⏳ **Next Task:** Creating and completing the response classes under the `dto` package.
+* ⏳ **Next Task:** Implementing Business Logic (Service Layer) and REST Controllers for core modules.
 
 ## Planned Features if Time Permits
 * Forgot password feature
